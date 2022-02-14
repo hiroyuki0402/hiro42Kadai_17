@@ -19,6 +19,10 @@
 		3B53E5FD275E0916002754C6 /* AddFruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B53E5FC275E0916002754C6 /* AddFruitViewController.swift */; };
 		3B53E5FF275E0983002754C6 /* CheckItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B53E5FE275E0983002754C6 /* CheckItem.swift */; };
 		3B53E603275E1039002754C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B53E602275E1039002754C6 /* Memo.swift */; };
+		3B55717127BA86DF00D54AFA /* FruitsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55717027BA86DF00D54AFA /* FruitsListCell.swift */; };
+		3B55717327BA918A00D54AFA /* FruitsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55717227BA918A00D54AFA /* FruitsDataSource.swift */; };
+		3B55717527BA958200D54AFA /* FruitsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55717427BA958200D54AFA /* FruitsListViewController.swift */; };
+		3B55717727BA982900D54AFA /* AddFruitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55717627BA982900D54AFA /* AddFruitsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		3B53E5FC275E0916002754C6 /* AddFruitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFruitViewController.swift; sourceTree = "<group>"; };
 		3B53E5FE275E0983002754C6 /* CheckItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItem.swift; sourceTree = "<group>"; };
 		3B53E602275E1039002754C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		3B55717027BA86DF00D54AFA /* FruitsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsListCell.swift; sourceTree = "<group>"; };
+		3B55717227BA918A00D54AFA /* FruitsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsDataSource.swift; sourceTree = "<group>"; };
+		3B55717427BA958200D54AFA /* FruitsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsListViewController.swift; sourceTree = "<group>"; };
+		3B55717627BA982900D54AFA /* AddFruitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFruitsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,9 @@
 		3B53E5CB275E06B8002754C6 /* Hiro42Kadai15 */ = {
 			isa = PBXGroup;
 			children = (
+				3B55716F27BA842200D54AFA /* Model */,
+				3B55716E27BA841600D54AFA /* View */,
+				3B55716D27BA840100D54AFA /* Controller */,
 				3B53E5CC275E06B8002754C6 /* AppDelegate.swift */,
 				3B53E5CE275E06B8002754C6 /* SceneDelegate.swift */,
 				3B53E5FC275E0916002754C6 /* AddFruitViewController.swift */,
@@ -134,6 +145,31 @@
 				3B53E5EF275E06BA002754C6 /* Hiro42Kadai15UITestsLaunchTests.swift */,
 			);
 			path = Hiro42Kadai15UITests;
+			sourceTree = "<group>";
+		};
+		3B55716D27BA840100D54AFA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3B55717427BA958200D54AFA /* FruitsListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3B55716E27BA841600D54AFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B55717027BA86DF00D54AFA /* FruitsListCell.swift */,
+				3B55717627BA982900D54AFA /* AddFruitsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3B55716F27BA842200D54AFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B55717227BA918A00D54AFA /* FruitsDataSource.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,12 +324,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B55717527BA958200D54AFA /* FruitsListViewController.swift in Sources */,
 				3B53E603275E1039002754C6 /* Memo.swift in Sources */,
+				3B55717327BA918A00D54AFA /* FruitsDataSource.swift in Sources */,
 				3B53E5D1275E06B8002754C6 /* ViewController.swift in Sources */,
 				3B53E5FD275E0916002754C6 /* AddFruitViewController.swift in Sources */,
 				3B53E5FF275E0983002754C6 /* CheckItem.swift in Sources */,
 				3B53E5CD275E06B8002754C6 /* AppDelegate.swift in Sources */,
 				3B53E5CF275E06B8002754C6 /* SceneDelegate.swift in Sources */,
+				3B55717127BA86DF00D54AFA /* FruitsListCell.swift in Sources */,
+				3B55717727BA982900D54AFA /* AddFruitsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
