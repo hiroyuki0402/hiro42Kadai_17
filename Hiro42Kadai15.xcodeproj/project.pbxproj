@@ -23,6 +23,7 @@
 		3B55717327BA918A00D54AFA /* FruitsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55717227BA918A00D54AFA /* FruitsDataSource.swift */; };
 		3B55717527BA958200D54AFA /* FruitsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55717427BA958200D54AFA /* FruitsListViewController.swift */; };
 		3B55717727BA982900D54AFA /* AddFruitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55717627BA982900D54AFA /* AddFruitsView.swift */; };
+		3B55717927BBE04B00D54AFA /* AddFruitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55717827BBE04B00D54AFA /* AddFruitsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		3B55717227BA918A00D54AFA /* FruitsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsDataSource.swift; sourceTree = "<group>"; };
 		3B55717427BA958200D54AFA /* FruitsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsListViewController.swift; sourceTree = "<group>"; };
 		3B55717627BA982900D54AFA /* AddFruitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFruitsView.swift; sourceTree = "<group>"; };
+		3B55717827BBE04B00D54AFA /* AddFruitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFruitsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				3B55717427BA958200D54AFA /* FruitsListViewController.swift */,
+				3B55717827BBE04B00D54AFA /* AddFruitsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B55717527BA958200D54AFA /* FruitsListViewController.swift in Sources */,
+				3B55717927BBE04B00D54AFA /* AddFruitsViewController.swift in Sources */,
 				3B53E603275E1039002754C6 /* Memo.swift in Sources */,
 				3B55717327BA918A00D54AFA /* FruitsDataSource.swift in Sources */,
 				3B53E5D1275E06B8002754C6 /* ViewController.swift in Sources */,
