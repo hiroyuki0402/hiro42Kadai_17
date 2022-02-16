@@ -8,22 +8,37 @@
 import UIKit
 
 class AddFruitsViewController: UIViewController {
+    fileprivate var addFruitsView: AddFruitsView!
+    fileprivate var dataSource: FruitsDataSource!
+    fileprivate var fruitsName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        dataSource = FruitsDataSource()
+
         // Do any additional setup after loading the view.
     }
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        addFruitsView.frame = CGRect(x: view.safeAreaInsets.left,
+                                     y: view.safeAreaInsets.top,
+                                     width: view.frame.size.width - view.safeAreaInsets.left -
+                                     view.safeAreaInsets.right,
+                                     height: view.frame.size.height - view.safeAreaInsets.bottom)
     }
-    */
+}
 
+extension AddFruitsViewController: AddFruitsViewDelegate {
+    func createView(fruitsAdd view: AddFruitsView, fruitsName: String) {
+        self.fruitsName = fruitsName
+    }
+
+    func createView(saveDidtap view: AddFruitsView) {
+        print("")
+    }
+    func createView(backDidtap view: AddFruitsView) {
+        print("")
+    }
 }

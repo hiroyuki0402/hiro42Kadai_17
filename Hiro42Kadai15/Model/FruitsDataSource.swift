@@ -25,5 +25,10 @@ class FruitsDataSource {
         }
         return nil
     }
-
+    func save(checkItem: CheckItem) {
+        checkItems.append(checkItem)
+    }
+    func firstView(checkItems: [CheckItem]) {
+        self.checkItems = checkItems
+    }
 }

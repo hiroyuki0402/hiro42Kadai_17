@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class FruitsListCell: UITableViewCell {
-
    private var checkImgaeView: UIImageView!
    private var fruitsNameLabel: UILabel!
 
@@ -17,7 +16,6 @@ class FruitsListCell: UITableViewCell {
                   reuseIdentifier: String?) {
         super.init(style: style,
                    reuseIdentifier: reuseIdentifier)
-
     }
 
     required init?(coder: NSCoder) {
@@ -31,17 +29,15 @@ class FruitsListCell: UITableViewCell {
                                       y: 10,
                                       width: 50,
                                       height: 50)
-        
         fruitsNameLabel.frame = CGRect(x: checkImgaeView.frame.origin.x + 10,
                                        y: self.frame.size.height / 2,
                                        width: contentView.frame.width - (checkImgaeView.frame.size.width + 20),
                                        height: checkImgaeView.frame.maxY - 20)
     }
 
-    
     func configure(item: CheckItem) {
         fruitsNameLabel.text = item.name
-        checkImgaeView.image = item.isChecked ? UIImage(named: "checkmark") : nil
+        checkImgaeView.image = item.isChecked ? UIImage(named: "") : nil
     }
 
 }
