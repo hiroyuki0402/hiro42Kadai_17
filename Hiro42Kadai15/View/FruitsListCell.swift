@@ -16,14 +16,9 @@ class FruitsListCell: UITableViewCell {
                   reuseIdentifier: String?) {
         super.init(style: style,
                    reuseIdentifier: reuseIdentifier)
-    }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        checkImgaeView = UIImageView()
+        fruitsNameLabel = UILabel()
 
         checkImgaeView.frame = CGRect(x: 10,
                                       y: 10,
@@ -33,11 +28,21 @@ class FruitsListCell: UITableViewCell {
                                        y: self.frame.size.height / 2,
                                        width: contentView.frame.width - (checkImgaeView.frame.size.width + 20),
                                        height: checkImgaeView.frame.maxY - 20)
+
+        addSubview(checkImgaeView)
+        addSubview(fruitsNameLabel)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
 
     func configure(item: CheckItem) {
         fruitsNameLabel.text = item.name
         checkImgaeView.image = item.isChecked ? UIImage(named: "") : nil
     }
-
 }

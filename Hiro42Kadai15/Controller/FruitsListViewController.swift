@@ -29,9 +29,8 @@ class FruitsListViewController: UIViewController {
         let datas: [CheckItem] = [CheckItem(name: "ss", isChecked: true),
                                  CheckItem(name: "ww", isChecked: true)]
         fruitsDataSource.firstView(checkItems: datas)
-
-        print(fruitsDataSource.count())
     }
+    
     @objc func barButtonTapped(sender: UIBarButtonItem) {
     }
 }
@@ -42,10 +41,11 @@ extension FruitsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? FruitCell
+        // swiftlint:disable:next force_cast
+         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! FruitsListCell
 
         guard let fruitData = fruitsDataSource.fruitsData(at: indexPath.row) else { fatalError("") }
-        cell?.configure(item: fruitData)
-        return cell ?? UITableViewCell()
+        cell.configure(item: fruitData)
+        return cell
     }
 }
