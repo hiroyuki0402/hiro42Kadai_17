@@ -7,15 +7,22 @@
 
 import UIKit
 
-class AddFruitsViewController: UIViewController {
+class AddFruitsViewController2: UIViewController {
+
     fileprivate var addFruitsView: AddFruitsView!
     fileprivate var dataSource: FruitsDataSource!
     fileprivate var fruitsName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
+        addFruitsView = AddFruitsView()
+        addFruitsView.delegate = self
+        view.addSubview(addFruitsView)
 
         dataSource = FruitsDataSource()
+
+
 
         // Do any additional setup after loading the view.
     }
@@ -30,7 +37,7 @@ class AddFruitsViewController: UIViewController {
     }
 }
 
-extension AddFruitsViewController: AddFruitsViewDelegate {
+extension AddFruitsViewController2: AddFruitsViewDelegate {
     func createView(fruitsAdd view: AddFruitsView, fruitsName: String) {
         self.fruitsName = fruitsName
     }
@@ -42,3 +49,4 @@ extension AddFruitsViewController: AddFruitsViewDelegate {
         print("")
     }
 }
+

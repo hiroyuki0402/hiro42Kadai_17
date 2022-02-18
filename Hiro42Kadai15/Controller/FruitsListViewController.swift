@@ -16,6 +16,7 @@ class FruitsListViewController: UIViewController {
         fruitsDataSource = FruitsDataSource()
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.backgroundColor = .brown
+        tableView.rowHeight = 70
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(FruitsListCell.self, forCellReuseIdentifier: "Cell")
@@ -30,8 +31,12 @@ class FruitsListViewController: UIViewController {
                                  CheckItem(name: "ww", isChecked: true)]
         fruitsDataSource.firstView(checkItems: datas)
     }
-    
     @objc func barButtonTapped(sender: UIBarButtonItem) {
+
+        // タスク作成画面へ画面遷移
+        let controller = AddFruitsViewController2()
+     let navi = UINavigationController(rootViewController: controller)
+        present(navi, animated: true, completion: nil)
     }
 }
 

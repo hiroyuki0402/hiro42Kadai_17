@@ -20,15 +20,19 @@ class FruitsListCell: UITableViewCell {
         checkImgaeView = UIImageView()
         fruitsNameLabel = UILabel()
 
-        checkImgaeView.frame = CGRect(x: 10,
-                                      y: 10,
+        checkImgaeView.frame = CGRect(x: 20,
+                                      y: contentView.frame.origin.y + 10,
                                       width: 50,
                                       height: 50)
-        fruitsNameLabel.frame = CGRect(x: checkImgaeView.frame.origin.x + 10,
-                                       y: self.frame.size.height / 2,
-                                       width: contentView.frame.width - (checkImgaeView.frame.size.width + 20),
-                                       height: checkImgaeView.frame.maxY - 20)
 
+        checkImgaeView.backgroundColor = .blue
+
+        fruitsNameLabel.frame = CGRect(x: checkImgaeView.frame.size.width + 40,
+                                       y: contentView.frame.origin.y + 25 ,
+                                       width: contentView.frame.width - (checkImgaeView.frame.size.width + 20),
+                                       height: 20)
+
+        fruitsNameLabel.backgroundColor = .brown
         addSubview(checkImgaeView)
         addSubview(fruitsNameLabel)
     }
