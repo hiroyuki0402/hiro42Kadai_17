@@ -11,7 +11,6 @@ import UIKit
 class FruitsListCell: UITableViewCell {
    private var checkImgaeView: UIImageView!
    private var fruitsNameLabel: UILabel!
-
     override init(style: UITableViewCell.CellStyle,
                   reuseIdentifier: String?) {
         super.init(style: style,
@@ -47,6 +46,6 @@ class FruitsListCell: UITableViewCell {
 
     func configure(item: CheckItem) {
         fruitsNameLabel.text = item.name
-        checkImgaeView.image = item.isChecked ? UIImage(named: "") : nil
+        checkImgaeView.image = item.isChecked ? UIImage(named: "checkmark") : nil
     }
 }

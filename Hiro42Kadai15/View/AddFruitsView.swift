@@ -16,9 +16,9 @@ class AddFruitsView: UIView {
         super.init(frame: frame)
         fruitsField = UITextField()
         fruitsField?.delegate = self
+        fruitsField.backgroundColor = .white
         addSubview(fruitsField)
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -41,6 +41,6 @@ extension AddFruitsView: UITextFieldDelegate {
 
 protocol AddFruitsViewDelegate: AnyObject {
     func createView(fruitsAdd view: AddFruitsView, fruitsName: String)
-    func createView(saveDidtap view: AddFruitsView)
-    func createView(backDidtap view: AddFruitsView)
+//    func createView(saveDidtap view: AddFruitsView)
+//    func createView(backDidtap view: AddFruitsView)
 }

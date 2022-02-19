@@ -28,14 +28,27 @@ class FruitsListViewController: UIViewController {
         navigationItem.rightBarButtonItem = barButtonItem
         // Do any additional setup after loading the view.
         let datas: [CheckItem] = [CheckItem(name: "ss", isChecked: true),
-                                 CheckItem(name: "ww", isChecked: true)]
+                                  CheckItem(name: "ww", isChecked: true)]
         fruitsDataSource.firstView(checkItems: datas)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
     @objc func barButtonTapped(sender: UIBarButtonItem) {
-
         // タスク作成画面へ画面遷移
         let controller = AddFruitsViewController2()
-     let navi = UINavigationController(rootViewController: controller)
+        let navi = UINavigationController(rootViewController: controller)
+        controller.setup(mode: .create) { _ in
+//            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+        } didTapCancel: {
+//            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+        }
+
+        navi.modalPresentationStyle = .fullScreen
+//        controller.createView(backDidtap: <#T##AddFruitsView#>)
         present(navi, animated: true, completion: nil)
     }
 }
@@ -47,10 +60,11 @@ extension FruitsListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable:next force_cast
-         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! FruitsListCell
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! FruitsListCell
+        print(indexPath.count)
         guard let fruitData = fruitsDataSource.fruitsData(at: indexPath.row) else { fatalError("") }
         cell.configure(item: fruitData)
+        print(indexPath.count)
         return cell
     }
 }
