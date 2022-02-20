@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum Mode {
-    case create
-    case update(name: String)
-}
 class AddFruitsViewController2: UIViewController {
     fileprivate var addFruitsView: AddFruitsView!
     fileprivate var dataSource: FruitsDataSource!
@@ -46,15 +42,22 @@ class AddFruitsViewController2: UIViewController {
     }
     @objc func didTapButon(sender: UIBarButtonItem ) {
         guard let fruitsName = self.fruitsName else { return }
-        switch sender {
-        case saveButton:
-            didTapCancel()
-//            dataSource.save(checkItem: .init(name: fruitsName, isChecked: true))
-            dataSource.firstView(checkItems: [.init(name: fruitsName, isChecked: true)])
+        print(sender)
+        switch sender.title {
+        case "Save":
+            dataSource.save(checkItem: .init(name: fruitsName, isChecked: true))
+//            dismiss(animated: true, completion: nil)
+//            navigationController?.popViewController(animated: true)
+//            print("save")
+            dismiss(animated: true, completion: nil)
+////            dataSource.save(checkItem: .init(name: fruitsName, isChecked: true))
+//            dataSource.firstView(checkItems: [.init(name: fruitsName, isChecked: true)])
 
-        case backButton:
-            didTapCancel()
-
+        case "Back":
+//            navigationController?.popViewController(animated: true)
+            dismiss(animated: true, completion: nil)
+//            print("back")
+//            navigationController.po
         default: break
         }
     }
@@ -73,11 +76,6 @@ class AddFruitsViewController2: UIViewController {
 //        self.didTapSave = didTapSave
 //        self.didTapCancel = didTapCancel
 //    }
-    func setup(mode: Mode, didTapSave: @escaping (String) -> Void, didTapCancel: @escaping () -> Void) {
-        self.mode = mode
-        self.didTapSave = didTapSave
-        self.didTapCancel = didTapCancel
-    }
 }
 
 extension AddFruitsViewController2: AddFruitsViewDelegate {
@@ -85,9 +83,9 @@ extension AddFruitsViewController2: AddFruitsViewDelegate {
         self.fruitsName = fruitsName
     }
 
-//    func createView(saveDidtap view: AddFruitsView) {
-//        print("")
-//    }
+    func createView(saveDidtap view: AddFruitsView) {
+//        view.
+    }
 //    func createView(backDidtap view: AddFruitsView) {
 //        print("")
 //    }

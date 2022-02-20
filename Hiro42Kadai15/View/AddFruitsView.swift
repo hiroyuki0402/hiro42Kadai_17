@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+enum Mode {
+    case create
+    case update(name: String)
+}
+
 class AddFruitsView: UIView {
     private var fruitsField: UITextField!
     weak var delegate: AddFruitsViewDelegate?
@@ -37,10 +42,17 @@ extension AddFruitsView: UITextFieldDelegate {
         delegate?.createView(fruitsAdd: self, fruitsName: fruitsField?.text ?? "")
         return true
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        delegate?.createView(fruitsAdd: self, fruitsName: fruitsField?.text ?? "")
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        delegate?.createView(fruitsAdd: self, fruitsName: fruitsField?.text ?? "")
+    }
 }
 
 protocol AddFruitsViewDelegate: AnyObject {
     func createView(fruitsAdd view: AddFruitsView, fruitsName: String)
-//    func createView(saveDidtap view: AddFruitsView)
+    func createView(saveDidtap view: AddFruitsView)
 //    func createView(backDidtap view: AddFruitsView)
 }

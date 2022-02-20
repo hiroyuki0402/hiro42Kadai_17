@@ -44,7 +44,7 @@ class FruitsListCell: UITableViewCell {
         super.layoutSubviews()
     }
 
-    func configure(item: CheckItem) {
+    func configure(item: FruitItem) {
         fruitsNameLabel.text = item.name
         checkImgaeView.image = item.isChecked ? UIImage(named: "checkmark") : nil
     }

@@ -92,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B18120927C2098C00D93D08 /* Feedback_Kadai16 */ = {
+			isa = PBXGroup;
+			children = (
+				3B53E602275E1039002754C6 /* Memo.swift */,
+				3B53E5FE275E0983002754C6 /* CheckItem.swift */,
+				3B53E5FC275E0916002754C6 /* AddFruitViewController.swift */,
+				3B53E5D0275E06B8002754C6 /* ViewController.swift */,
+			);
+			path = Feedback_Kadai16;
+			sourceTree = "<group>";
+		};
 		3B53E5C0275E06B8002754C6 = {
 			isa = PBXGroup;
 			children = (
@@ -120,14 +131,11 @@
 				3B55716D27BA840100D54AFA /* Controller */,
 				3B53E5CC275E06B8002754C6 /* AppDelegate.swift */,
 				3B53E5CE275E06B8002754C6 /* SceneDelegate.swift */,
-				3B53E5FC275E0916002754C6 /* AddFruitViewController.swift */,
-				3B53E5D0275E06B8002754C6 /* ViewController.swift */,
-				3B53E5FE275E0983002754C6 /* CheckItem.swift */,
 				3B53E5D2275E06B8002754C6 /* Main.storyboard */,
 				3B53E5D5275E06B9002754C6 /* Assets.xcassets */,
 				3B53E5D7275E06B9002754C6 /* LaunchScreen.storyboard */,
 				3B53E5DA275E06B9002754C6 /* Info.plist */,
-				3B53E602275E1039002754C6 /* Memo.swift */,
+				3B18120927C2098C00D93D08 /* Feedback_Kadai16 */,
 			);
 			path = Hiro42Kadai15;
 			sourceTree = "<group>";
