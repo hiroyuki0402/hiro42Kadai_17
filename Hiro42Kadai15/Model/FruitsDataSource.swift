@@ -8,29 +8,50 @@
 import Foundation
 
 class FruitsDataSource {
-    
-    private var checkItems = [FruitItem]()
+    /// - NOTE: 一時的にstaticnにしているが後半でcoreData or User defaultに変更
+    static private var checkItems = [FruitItem]()
 
     /// セルの数
     /// - Returns: checkItemsの総数
     func count() -> Int {
-        return checkItems.count
+        return FruitsDataSource.checkItems.count
     }
 
     /// セルの内容
     /// - Parameter indexPath: TableViewのIndexPath.row
     /// - Returns: 指定したindexに対応するフルーツを返却
     func fruitsData(at indexPath: Int) -> FruitItem? {
-        if checkItems.count > indexPath {
-            return checkItems[indexPath]
+        if FruitsDataSource.checkItems.count > indexPath {
+            return FruitsDataSource.checkItems[indexPath]
         }
         return nil
     }
+
+    /// データの保存
+    /// - Parameter checkItem: FruitItem
     func save(checkItem: FruitItem) {
-        checkItems.append(checkItem)
+        FruitsDataSource.checkItems.append(checkItem)
     }
-    func firstView(checkItems: [FruitItem]) {
-        self.checkItems = checkItems
+
+    /// - NOTE: coreData or User defaultに変更した際にロジック変更予定
+    func loadData() -> [FruitItem] {
+        return FruitsDataSource.checkItems
+    }
+
+    /// FruitsListViewControllerの初期表示値
+    func initializeFruitsInStock() {
+        FruitsDataSource.checkItems = [
+            .init(name: "りんご", isChecked: false),
+            .init(name: "みかん", isChecked: true),
+            .init(name: "バナナ", isChecked: false),
+            .init(name: "パイナップル", isChecked: true)
+        ]
+    }
+
+    /// 選んだセルのBool値の反転
+    /// - Parameter indexPath: 指定したindex
+    func toggle(at indexPath: Int) {
+        FruitsDataSource.checkItems[indexPath].isChecked.toggle()
     }
 }
 

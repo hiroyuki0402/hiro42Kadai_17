@@ -21,7 +21,8 @@ class AddFruitsView: UIView {
         super.init(frame: frame)
         fruitsField = UITextField()
         fruitsField?.delegate = self
-        fruitsField.backgroundColor = .white
+        fruitsField.borderStyle = .roundedRect
+        fruitsField.backgroundColor = .lightGray
         addSubview(fruitsField)
     }
     required init?(coder: NSCoder) {
@@ -29,7 +30,7 @@ class AddFruitsView: UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        fruitsField?.frame = CGRect(x: bounds.origin.x + 30,
+        fruitsField?.frame = CGRect(x: 20,
                                     y: bounds.origin.y + 30,
                                     width: bounds.size.width - 40,
                                     height: 50)
@@ -53,6 +54,4 @@ extension AddFruitsView: UITextFieldDelegate {
 
 protocol AddFruitsViewDelegate: AnyObject {
     func createView(fruitsAdd view: AddFruitsView, fruitsName: String)
-    func createView(saveDidtap view: AddFruitsView)
-//    func createView(backDidtap view: AddFruitsView)
 }

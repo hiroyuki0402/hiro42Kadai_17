@@ -24,14 +24,12 @@ class FruitsListCell: UITableViewCell {
                                       width: 50,
                                       height: 50)
 
-        checkImgaeView.backgroundColor = .blue
-
         fruitsNameLabel.frame = CGRect(x: checkImgaeView.frame.size.width + 40,
                                        y: contentView.frame.origin.y + 25 ,
-                                       width: contentView.frame.width - (checkImgaeView.frame.size.width + 20),
+                                       width: contentView.frame.width - (checkImgaeView.frame.size.width + 50),
                                        height: 20)
+        fruitsNameLabel.adjustsFontSizeToFitWidth = true
 
-        fruitsNameLabel.backgroundColor = .brown
         addSubview(checkImgaeView)
         addSubview(fruitsNameLabel)
     }

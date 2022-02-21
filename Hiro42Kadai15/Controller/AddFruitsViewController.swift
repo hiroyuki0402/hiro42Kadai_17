@@ -12,52 +12,43 @@ class AddFruitsViewController2: UIViewController {
     fileprivate var dataSource: FruitsDataSource!
     fileprivate var fruitsName: String?
     private var mode: Mode!
-    private var didTapCancel: () -> Void = {}
-    private var didTapSave: (String) -> Void = { _ in }
-    private var backButton: UIBarButtonItem!
-    private var saveButton: UIBarButtonItem!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .black
-        addFruitsView = AddFruitsView()
-        addFruitsView.delegate = self
-        view.addSubview(addFruitsView)
-
+    private lazy var backButton: UIBarButtonItem = {
+        var backButton = UIBarButtonItem()
         backButton = UIBarButtonItem(title: "Back",
                                      style: .plain,
                                      target: self,
                                      action: #selector(didTapButon(sender:)))
-
+        return backButton
+    }()
+    private lazy var saveButton: UIBarButtonItem = {
+        var saveButton = UIBarButtonItem()
         saveButton = UIBarButtonItem(title: "Save",
                                      style: .plain,
                                      target: self,
                                      action: #selector(didTapButon(sender:)))
+        return saveButton
+    }()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        addFruitsView = AddFruitsView()
+        addFruitsView.delegate = self
+        view.addSubview(addFruitsView)
         navigationItem.leftBarButtonItem = backButton
         navigationItem.rightBarButtonItem = saveButton
         dataSource = FruitsDataSource()
-
-        // Do any additional setup after loading the view.
     }
+
     @objc func didTapButon(sender: UIBarButtonItem ) {
         guard let fruitsName = self.fruitsName else { return }
-        print(sender)
         switch sender.title {
         case "Save":
             dataSource.save(checkItem: .init(name: fruitsName, isChecked: true))
-//            dismiss(animated: true, completion: nil)
-//            navigationController?.popViewController(animated: true)
-//            print("save")
             dismiss(animated: true, completion: nil)
-////            dataSource.save(checkItem: .init(name: fruitsName, isChecked: true))
-//            dataSource.firstView(checkItems: [.init(name: fruitsName, isChecked: true)])
-
         case "Back":
-//            navigationController?.popViewController(animated: true)
             dismiss(animated: true, completion: nil)
-//            print("back")
-//            navigationController.po
         default: break
         }
     }
@@ -70,23 +61,9 @@ class AddFruitsViewController2: UIViewController {
                                      view.safeAreaInsets.right,
                                      height: view.frame.size.height - view.safeAreaInsets.bottom)
     }
-
-//    func setup(mode: Mode, didTapSave: @escaping (String) -> Void, didTapCancel: @escaping () -> Void) {
-//        self.mode = mode
-//        self.didTapSave = didTapSave
-//        self.didTapCancel = didTapCancel
-//    }
 }
-
 extension AddFruitsViewController2: AddFruitsViewDelegate {
     func createView(fruitsAdd view: AddFruitsView, fruitsName: String) {
         self.fruitsName = fruitsName
     }
-
-    func createView(saveDidtap view: AddFruitsView) {
-//        view.
-    }
-//    func createView(backDidtap view: AddFruitsView) {
-//        print("")
-//    }
 }
