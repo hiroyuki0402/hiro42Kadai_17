@@ -8,13 +8,10 @@
 import Foundation
 import UIKit
 
-enum Mode {
-    case create
-    case update(name: String)
-}
-
 class AddFruitsView: UIView {
-    private var fruitsField: UITextField!
+    //    fileprivate var fruitsDataSource: FruitsDataSource?
+    fileprivate var fruitsField: UITextField!
+    fileprivate var fruitsName: String!
     weak var delegate: AddFruitsViewDelegate?
 
     required override init(frame: CGRect) {
@@ -23,6 +20,8 @@ class AddFruitsView: UIView {
         fruitsField?.delegate = self
         fruitsField.borderStyle = .roundedRect
         fruitsField.backgroundColor = .lightGray
+        fruitsField.text = fruitsName ?? ""
+        fruitsField.textColor = .white
         addSubview(fruitsField)
     }
     required init?(coder: NSCoder) {
@@ -35,23 +34,30 @@ class AddFruitsView: UIView {
                                     width: bounds.size.width - 40,
                                     height: 50)
     }
+    func test(string: String) {
+        self.fruitsName = string
+    }
 }
 
 extension AddFruitsView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        delegate?.createView(fruitsAdd: self, fruitsName: fruitsField?.text ?? "")
+        delegate?.createView(fruitsName: fruitsField?.text ?? "")
         return true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        delegate?.createView(fruitsAdd: self, fruitsName: fruitsField?.text ?? "")
+        delegate?.createView(fruitsName: fruitsField?.text ?? "")
         return true
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        delegate?.createView(fruitsAdd: self, fruitsName: fruitsField?.text ?? "")
+        delegate?.createView( fruitsName: fruitsField?.text ?? "")
     }
 }
 
 protocol AddFruitsViewDelegate: AnyObject {
-    func createView(fruitsAdd view: AddFruitsView, fruitsName: String)
+    func createView(fruitsName: String)
+}
+enum Mode {
+    case create
+    case update
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B18120B27C6077000D93D08 /* Extension-UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B18120A27C6077000D93D08 /* Extension-UINavigationController.swift */; };
 		3B53E5CD275E06B8002754C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B53E5CC275E06B8002754C6 /* AppDelegate.swift */; };
 		3B53E5CF275E06B8002754C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B53E5CE275E06B8002754C6 /* SceneDelegate.swift */; };
 		3B53E5D1275E06B8002754C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B53E5D0275E06B8002754C6 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B18120A27C6077000D93D08 /* Extension-UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UINavigationController.swift"; sourceTree = "<group>"; };
 		3B53E5C9275E06B8002754C6 /* Hiro42Kadai15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiro42Kadai15.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B53E5CC275E06B8002754C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B53E5CE275E06B8002754C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 			path = Feedback_Kadai16;
 			sourceTree = "<group>";
 		};
+		3B18120C27C6077B00D93D08 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3B18120A27C6077000D93D08 /* Extension-UINavigationController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		3B53E5C0275E06B8002754C6 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +136,7 @@
 		3B53E5CB275E06B8002754C6 /* Hiro42Kadai15 */ = {
 			isa = PBXGroup;
 			children = (
+				3B18120C27C6077B00D93D08 /* Extension */,
 				3B55716F27BA842200D54AFA /* Model */,
 				3B55716E27BA841600D54AFA /* View */,
 				3B55716D27BA840100D54AFA /* Controller */,
@@ -336,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B55717527BA958200D54AFA /* FruitsListViewController.swift in Sources */,
+				3B18120B27C6077000D93D08 /* Extension-UINavigationController.swift in Sources */,
 				3B55717927BBE04B00D54AFA /* AddFruitsViewController.swift in Sources */,
 				3B53E603275E1039002754C6 /* Memo.swift in Sources */,
 				3B55717327BA918A00D54AFA /* FruitsDataSource.swift in Sources */,

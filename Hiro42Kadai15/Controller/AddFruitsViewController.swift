@@ -11,7 +11,8 @@ class AddFruitsViewController2: UIViewController {
     fileprivate var addFruitsView: AddFruitsView!
     fileprivate var dataSource: FruitsDataSource!
     fileprivate var fruitsName: String?
-    private var mode: Mode!
+    private var runBack: () -> Void = {}
+
 
     private lazy var backButton: UIBarButtonItem = {
         var backButton = UIBarButtonItem()
@@ -46,9 +47,9 @@ class AddFruitsViewController2: UIViewController {
         switch sender.title {
         case "Save":
             dataSource.save(checkItem: .init(name: fruitsName, isChecked: true))
-            dismiss(animated: true, completion: nil)
+            runBack()
         case "Back":
-            dismiss(animated: true, completion: nil)
+            runBack()
         default: break
         }
     }
@@ -61,9 +62,15 @@ class AddFruitsViewController2: UIViewController {
                                      view.safeAreaInsets.right,
                                      height: view.frame.size.height - view.safeAreaInsets.bottom)
     }
+    func setup(runBack: @escaping () -> Void) {
+        self.runBack = runBack
+    }
+    func load(load: FruitItem) {
+        self.fruitsName = load.name
+    }
 }
 extension AddFruitsViewController2: AddFruitsViewDelegate {
-    func createView(fruitsAdd view: AddFruitsView, fruitsName: String) {
+    func createView(fruitsName: String) {
         self.fruitsName = fruitsName
     }
 }
