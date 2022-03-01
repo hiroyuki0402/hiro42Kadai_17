@@ -48,6 +48,8 @@ class FruitsDataSource {
         ]
     }
 
+
+
     /// 選んだセルのBool値の反転
     /// - Parameter indexPath: 指定したindex
     func toggle(at indexPath: Int) {

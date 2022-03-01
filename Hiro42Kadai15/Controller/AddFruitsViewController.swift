@@ -13,13 +13,12 @@ class AddFruitsViewController2: UIViewController {
     fileprivate var fruitsName: String?
     private var runBack: () -> Void = {}
 
-
     private lazy var backButton: UIBarButtonItem = {
         var backButton = UIBarButtonItem()
         backButton = UIBarButtonItem(title: "Back",
                                      style: .plain,
                                      target: self,
-                                     action: #selector(didTapButon(sender:)))
+                                     action: #selector(cancelBarbuttonTapped(sender:)))
         return backButton
     }()
     private lazy var saveButton: UIBarButtonItem = {
@@ -27,7 +26,7 @@ class AddFruitsViewController2: UIViewController {
         saveButton = UIBarButtonItem(title: "Save",
                                      style: .plain,
                                      target: self,
-                                     action: #selector(didTapButon(sender:)))
+                                     action: #selector(saveBarbuttonTapped(sender:)))
         return saveButton
     }()
 
@@ -41,17 +40,18 @@ class AddFruitsViewController2: UIViewController {
         navigationItem.rightBarButtonItem = saveButton
         dataSource = FruitsDataSource()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 
-    @objc func didTapButon(sender: UIBarButtonItem ) {
+    @objc func cancelBarbuttonTapped(sender: UIBarButtonItem ) {
+        runBack()
+    }
+
+    @objc func saveBarbuttonTapped(sender: UIBarButtonItem ) {
         guard let fruitsName = self.fruitsName else { return }
-        switch sender.title {
-        case "Save":
             dataSource.save(checkItem: .init(name: fruitsName, isChecked: true))
             runBack()
-        case "Back":
-            runBack()
-        default: break
-        }
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -65,8 +65,9 @@ class AddFruitsViewController2: UIViewController {
     func setup(runBack: @escaping () -> Void) {
         self.runBack = runBack
     }
-    func load(load: FruitItem) {
-        self.fruitsName = load.name
+
+    func loadData(at index: Int) -> String {
+        return FruitsDataSource().loadData()[index].name
     }
 }
 extension AddFruitsViewController2: AddFruitsViewDelegate {

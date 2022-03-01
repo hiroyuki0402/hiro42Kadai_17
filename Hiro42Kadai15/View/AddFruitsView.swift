@@ -34,8 +34,8 @@ class AddFruitsView: UIView {
                                     width: bounds.size.width - 40,
                                     height: 50)
     }
-    func test(string: String) {
-        self.fruitsName = string
+    func test(string: FruitItem) {
+        fruitsName = string.name
     }
 }
 
