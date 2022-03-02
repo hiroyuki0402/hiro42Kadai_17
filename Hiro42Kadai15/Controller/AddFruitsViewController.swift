@@ -10,8 +10,9 @@ import UIKit
 class AddFruitsViewController2: UIViewController {
     fileprivate var addFruitsView: AddFruitsView!
     fileprivate var dataSource: FruitsDataSource!
-    fileprivate var fruitsName: String?
-    private var runBack: () -> Void = {}
+    fileprivate var fruitsName: FruitItem?
+    fileprivate var insertDstination: Int!
+    private var mode: Mode!
 
     private lazy var backButton: UIBarButtonItem = {
         var backButton = UIBarButtonItem()
@@ -45,13 +46,19 @@ class AddFruitsViewController2: UIViewController {
     }
 
     @objc func cancelBarbuttonTapped(sender: UIBarButtonItem ) {
-        runBack()
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 
     @objc func saveBarbuttonTapped(sender: UIBarButtonItem ) {
         guard let fruitsName = self.fruitsName else { return }
-            dataSource.save(checkItem: .init(name: fruitsName, isChecked: true))
-            runBack()
+        switch mode {
+        case .create:
+            dataSource.save(checkItem: .init(name: fruitsName.name, isChecked: true))
+        case .update:
+            dataSource.update(at: insertDstination, fruitName: fruitsName)
+        default: break
+        }
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -62,16 +69,15 @@ class AddFruitsViewController2: UIViewController {
                                      view.safeAreaInsets.right,
                                      height: view.frame.size.height - view.safeAreaInsets.bottom)
     }
-    func setup(runBack: @escaping () -> Void) {
-        self.runBack = runBack
+    func update(at insert: Int, mode: Mode) {
+        self.mode = mode
+        insertDstination = insert
     }
 
-    func loadData(at index: Int) -> String {
-        return FruitsDataSource().loadData()[index].name
-    }
 }
 extension AddFruitsViewController2: AddFruitsViewDelegate {
-    func createView(fruitsName: String) {
+    func createView(fruitsName: FruitItem) {
         self.fruitsName = fruitsName
     }
 }
+

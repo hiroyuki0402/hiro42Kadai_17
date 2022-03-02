@@ -55,6 +55,10 @@ class FruitsDataSource {
     func toggle(at indexPath: Int) {
         FruitsDataSource.checkItems[indexPath].isChecked.toggle()
     }
+
+    func update(at index: Int, fruitName: FruitItem) {
+        FruitsDataSource.checkItems[index] = fruitName
+    }
 }
 
 class FruitItem {

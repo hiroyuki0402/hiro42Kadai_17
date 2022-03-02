@@ -27,14 +27,11 @@ class FruitsListViewController: UIViewController {
     }()
 
     private var fruitsDataSource: FruitsDataSource!
-    private var addFruitsVidw: AddFruitsView!
     private var fruitsNames: [FruitItem]!
-    private var mode: Mode!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitsDataSource = FruitsDataSource()
-        addFruitsVidw = AddFruitsView()
         fruitsDataSource.initializeFruitsInStock()
         navigationItem.rightBarButtonItem = barButtonItem
     }
@@ -52,9 +49,6 @@ class FruitsListViewController: UIViewController {
         let navi = UINavigationController(rootViewController: controller)
         navi.modalPresentationStyle = .fullScreen
         present(navi, animated: true, completion: nil)
-        controller.setup {
-            self.dismiss(animated: true, completion: nil)
-        }
     }
 }
 
@@ -72,9 +66,8 @@ extension FruitsListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        guard let fruitName = fruitsDataSource.fruitsData(at: indexPath.row)  else { fatalError("") }
-        addFruitsVidw.test(string: fruitName)
         let controller = AddFruitsViewController2()
+        controller.update(at: indexPath.row, mode: .update)
         let navi = UINavigationController(rootViewController: controller)
         navi.modalPresentationStyle = .fullScreen
         present(navi, animated: true, completion: nil)
