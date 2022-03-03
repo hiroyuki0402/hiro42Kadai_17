@@ -9,14 +9,15 @@ import Foundation
 import UIKit
 
 class AddFruitsView: UIView {
-    fileprivate var fruitsDataSource: FruitsDataSource?
+    fileprivate var fruitsDataSource: FruitsDataSource!
     fileprivate var fruitsField: UITextField!
     fileprivate var fruitsName: String!
     weak var delegate: AddFruitsViewDelegate?
+    private var mode: Mode!
+    private var selectedIndex: Int!
 
     required override init(frame: CGRect) {
         super.init(frame: frame)
-        fruitsName = FruitsDataSource().loadData()[insertDstination].name
         fruitsField = UITextField()
         fruitsField?.delegate = self
         fruitsField.borderStyle = .roundedRect
@@ -35,28 +36,30 @@ class AddFruitsView: UIView {
                                     width: bounds.size.width - 40,
                                     height: 50)
     }
-    func insertDstination(index: Int) -> Int {
-        return index
-    }
 }
 
 extension AddFruitsView: UITextFieldDelegate {
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        delegate?.createView(fruitsName: .init(name: fruitsField?.text ?? "", isChecked: false))
+        if textField.isSelected {
+        delegate?.createView(Editting: self, fruitsName: .init(name: fruitsField?.text ?? "", isChecked: false))
+        }
         return true
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        delegate?.createView(fruitsName: .init(name: fruitsField?.text ?? "", isChecked: false))
-        return true
+}
+extension AddFruitsView: FruitDataProtocol {
+    func editData(dataSours: FruitsDataSource, mode: Mode, at selectedIndex: Int) {
+        if mode == .update {
+            self.fruitsName = fruitsDataSource.fruitsData(at: selectedIndex)?.name
+        }
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        delegate?.createView(fruitsName: .init(name: fruitsField?.text ?? "", isChecked: false))
-    }
+
+
 }
 
 protocol AddFruitsViewDelegate: AnyObject {
-    func createView(fruitsName: FruitItem)
+    func createView(Editting view: AddFruitsView, fruitsName: FruitItem)
 }
 enum Mode {
     case create

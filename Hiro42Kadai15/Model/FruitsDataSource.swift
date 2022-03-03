@@ -10,6 +10,9 @@ import Foundation
 class FruitsDataSource {
     /// - NOTE: 一時的にstaticnにしているが後半でcoreData or User defaultに変更
     static private var checkItems = [FruitItem]()
+    static private var mode: Mode!
+    private var selectedIndex: Int!
+    weak var delegate: FruitDataProtocol?
 
     /// セルの数
     /// - Returns: checkItemsの総数
@@ -48,8 +51,6 @@ class FruitsDataSource {
         ]
     }
 
-
-
     /// 選んだセルのBool値の反転
     /// - Parameter indexPath: 指定したindex
     func toggle(at indexPath: Int) {
@@ -59,8 +60,19 @@ class FruitsDataSource {
     func update(at index: Int, fruitName: FruitItem) {
         FruitsDataSource.checkItems[index] = fruitName
     }
+
+    func selectedAtIndex(at index: Int, mode: Mode) {
+        //FruitsDataSource.mode = mode
+        delegate?.editData(dataSours: self, mode: .update, at: index)
+    }
+    func giveIndex() -> Int {
+        return selectedIndex
+    }
 }
 
+protocol FruitDataProtocol: AnyObject {
+    func editData(dataSours: FruitsDataSource, mode: Mode , at selectedIndex: Int)
+}
 class FruitItem {
     var name: String
     var isChecked: Bool

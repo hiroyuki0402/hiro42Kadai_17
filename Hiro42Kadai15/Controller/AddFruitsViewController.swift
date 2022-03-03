@@ -11,8 +11,6 @@ class AddFruitsViewController2: UIViewController {
     fileprivate var addFruitsView: AddFruitsView!
     fileprivate var dataSource: FruitsDataSource!
     fileprivate var fruitsName: FruitItem?
-    fileprivate var insertDstination: Int!
-    private var mode: Mode!
 
     private lazy var backButton: UIBarButtonItem = {
         var backButton = UIBarButtonItem()
@@ -31,16 +29,18 @@ class AddFruitsViewController2: UIViewController {
         return saveButton
     }()
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .black
+        dataSource = FruitsDataSource()
         addFruitsView = AddFruitsView()
         addFruitsView.delegate = self
         view.addSubview(addFruitsView)
         navigationItem.leftBarButtonItem = backButton
         navigationItem.rightBarButtonItem = saveButton
-        dataSource = FruitsDataSource()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -51,33 +51,21 @@ class AddFruitsViewController2: UIViewController {
 
     @objc func saveBarbuttonTapped(sender: UIBarButtonItem ) {
         guard let fruitsName = self.fruitsName else { return }
-        switch mode {
-        case .create:
-            dataSource.save(checkItem: .init(name: fruitsName.name, isChecked: true))
-        case .update:
-            dataSource.update(at: insertDstination, fruitName: fruitsName)
-        default: break
-        }
+        dataSource.save(checkItem: .init(name: fruitsName.name, isChecked: false))
         navigationController?.dismiss(animated: true, completion: nil)
     }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
         addFruitsView.frame = CGRect(x: view.safeAreaInsets.left,
                                      y: view.safeAreaInsets.top,
                                      width: view.frame.size.width - view.safeAreaInsets.left -
                                      view.safeAreaInsets.right,
                                      height: view.frame.size.height - view.safeAreaInsets.bottom)
     }
-    func update(at insert: Int, mode: Mode) {
-        self.mode = mode
-        insertDstination = insert
-    }
-
 }
 extension AddFruitsViewController2: AddFruitsViewDelegate {
-    func createView(fruitsName: FruitItem) {
+    func createView(Editting view: AddFruitsView, fruitsName: FruitItem) {
         self.fruitsName = fruitsName
     }
 }
-

@@ -67,7 +67,6 @@ extension FruitsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let controller = AddFruitsViewController2()
-        controller.update(at: indexPath.row, mode: .update)
         let navi = UINavigationController(rootViewController: controller)
         navi.modalPresentationStyle = .fullScreen
         present(navi, animated: true, completion: nil)
